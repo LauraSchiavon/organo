@@ -5,16 +5,6 @@ import Botao from "../Botao";
 import { useState } from "react";
 
 const Formulario = (props) => {
-  const times = [
-    "Programação",
-    "Front-End",
-    "Data Science",
-    "Devops",
-    "UX e Design",
-    "Mobile",
-    "Inovação e Gestão",
-  ];
-
   const [nome, setNome] = useState(""); // Cria o estado nome e a função setNome para atualizar o estado, ou seja, o valor do input
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
@@ -29,6 +19,10 @@ const Formulario = (props) => {
       imagem,
       time,
     }); //chama a função aoColaboradorCadastrado passada como prop, passando o objeto colaborador
+    setNome("");
+    setCargo("");
+    setImagem("");
+    setTime(""); // limpa as informações do formulário ao clicar no botão criar card
   };
 
   return (
@@ -59,7 +53,7 @@ const Formulario = (props) => {
         <ListaSuspensa
           obrigatorio={true}
           label="Time"
-          itens={times}
+          itens={props.times}
           valor={time}
           aoAlterado={(valor) => setTime(valor)}
         />
